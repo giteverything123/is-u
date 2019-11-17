@@ -40,7 +40,19 @@
 			});
 			//点击按钮登录
 			$('#login-btn').on('click',() => {
-				
+				let username = $('#username').val();
+				let password = $('#password').val();
+				$.ajax({
+					type: 'POST',
+					url: 'http://localhost:3000/toLogin',
+					data: {username,password},
+					success: function(data){
+						console.log(data);
+					},
+					error:function(err){
+						console.log(err);
+					}
+				});
 			});
 		})();
 	</script>
