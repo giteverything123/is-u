@@ -1,0 +1,47 @@
+{% extends '../layout.html' %}
+{% block style %}
+	<link rel="stylesheet" href="css/login.css">
+{% endblock %}
+{% block body %}
+	<div id="s-body">
+		<div class="login-box">
+			<input type="text" id="username" placeholder="USERNAME">
+			<input type="password" id="password" placeholder="PASSWORD" maxlength="20">
+			<div id="login-btn">Login</div>
+		</div>
+	</div>
+{% endblock %}
+{% block script %}
+	<script>
+		//首先判断浏览器屏幕的宽度
+		(()=>{
+			let backGroundCalc = () => {
+				let body = $('body');
+				let screenWidth = body.width();
+				let screenHeight = body.height();
+				let sBody = $('#s-body');
+				//如果screenWidth大于等于1800则把sBody的宽度设置为1800
+				if(screenWidth >= 1800){
+					sBody.css('width','1800px');
+				}
+				sBody.css('height',screenHeight + 'px');
+				sBody.css('background-image','url(../images/timg.jpeg)');
+				//设置sBody的背景位置
+				let posX = -(1800 - screenWidth) / 2 + 'px';
+				sBody.css('background-position-x',posX);
+				let posY = -(1800 - screenHeight) / 2 - 40 + 'px';
+				sBody.css('background-position-y',posY);
+			}
+			window.onresize = () => {
+				backGroundCalc();
+			}
+			$(document).ready(()=>{
+				backGroundCalc();
+			});
+			//点击按钮登录
+			$('#login-btn').on('click',() => {
+				
+			});
+		})();
+	</script>
+{% endblock %}
