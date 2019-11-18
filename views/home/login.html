@@ -7,6 +7,7 @@
 		<div class="login-box">
 			<input type="text" id="username" placeholder="USERNAME">
 			<input type="password" id="password" placeholder="PASSWORD" maxlength="20">
+			<div id="tip"></div>
 			<div id="login-btn">Login</div>
 		</div>
 	</div>
@@ -42,12 +43,27 @@
 			$('#login-btn').on('click',() => {
 				let username = $('#username').val();
 				let password = $('#password').val();
+				if(!username){
+					$('#tip').html('请输入用户名');
+					setTimeout(()=>{$('#tip').html('')},500);
+					return;
+				}
+				if(!password){
+					$('#tip').html('请输入密码');
+					setTimeout(()=>{$('#tip').html('')},500);
+					return;
+				}
 				$.ajax({
 					type: 'POST',
-					url: 'http://localhost:3000/toLogin',
+					url: config.host + '/toLogin',
 					data: {username,password},
 					success: function(data){
-						console.log(data);
+						if(data.success){
+							alert('进入页面');
+						} else if(!data.success){
+							$('#tip').html(data.msg);
+							setTimeout(()=>{$('#tip').html('')},500);
+						}
 					},
 					error:function(err){
 						console.log(err);

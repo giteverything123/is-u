@@ -1,0 +1,52 @@
+html,
+body {
+	height: 100%;
+	background: #888;
+}
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+#register-box{
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	width: 500px;
+	height: 300px;
+	background: rgb(228, 230, 167);
+	transform: translateX(-50%) translateY(-50%);
+	border: 1px solid #999;
+	border-radius: 4px;
+}
+input{
+	display: block;
+	margin: 0 auto;
+	width: 400px;
+	height: 36px;
+	line-height: 34px;
+	outline: none;
+	border: 1px solid rgb(115, 180, 18);
+	margin-top: 24px;
+	padding-left: 15px;
+	font-size: 14px;
+	border-radius: 4px;
+}
+#tip{
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+}
+#register-btn{
+	width: 100px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	margin:0 auto;
+	background: rgb(143, 238, 20);
+	margin-top: 40px;
+	border-radius: 4px;
+	color: #fff;
+	cursor: pointer;
+	user-select: none;
+}

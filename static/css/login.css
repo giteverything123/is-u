@@ -68,3 +68,12 @@ input::-ms-input-placeholder {
 	border: 2px solid #fff;
 	user-select: none;
 }
+#tip{
+	color:red;
+	position: absolute;
+	left:40px;
+	top: 230px;
+	font-size: 14px;
+	text-align: center;
+	width: 300px;
+}
