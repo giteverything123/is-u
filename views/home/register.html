@@ -7,15 +7,46 @@
 			<input type="text" id="username" placeholder="请输入用户名">
 			<input type="password" id="password" placeholder="请输入密码" maxlength="20">
 			<input type="password" id="password1" placeholder="请确认密码" maxlength="20">
-			<div id="tip"></div>
 			<div id="register-btn">注册</div>
+	</div>
+	<div class="dialog">
+		<div id="tip"></div>
 	</div>
 {% endblock %}
 {% block script %}
 	<script>
 		//首先判断浏览器屏幕的宽度
 		(()=>{
-			
+			$('#register-btn').on('click',()=>{
+				let username = $('#username').val(),
+						password = $('#password').val(),
+						password1 = $('#password1').val();
+				if(!username){
+					$('#tip').html('请输入用户名');
+					$('.dialog').show();
+					setTimeout(()=>{$('.dialog').hide();},1000);
+					return;
+				}
+				if(!password){
+					$('#tip').html('请输入密码');
+					$('.dialog').show();
+					setTimeout(()=>{$('.dialog').hide();},1000);
+					return;
+				}
+				if(!password1){
+					$('#tip').html('请输入确认密码');
+					$('.dialog').show();
+					setTimeout(()=>{$('.dialog').hide();},1000);
+					return;
+				}
+				if(password!==password1){
+					$('#tip').html('两次输入密码不一致');
+					$('.dialog').show();
+					setTimeout(()=>{$('.dialog').hide();},1000);
+					return;
+				}
+				
+			});
 		})();
 	</script>
 {% endblock %}

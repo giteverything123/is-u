@@ -9,6 +9,7 @@
 			<input type="password" id="password" placeholder="PASSWORD" maxlength="20">
 			<div id="tip"></div>
 			<div id="login-btn">Login</div>
+			<div id="to-register">sign in</div>
 		</div>
 	</div>
 {% endblock %}
@@ -70,6 +71,10 @@
 					}
 				});
 			});
+
+			$('#to-register').on('click',()=>{
+				window.location.href = './register';
+			})
 		})();
 	</script>
 {% endblock %}
