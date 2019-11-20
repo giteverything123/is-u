@@ -5,6 +5,7 @@ module.exports = (app) => {
     router
     .get('/login',home.login)
     .get('/register',home.register)
-    .post('/toLogin',home.toLogin);
+    .post('/toLogin',home.toLogin)
+    .post('/toRegister',home.toRegister);
     app.use(router.routes()).use(router.allowedMethods());
 }
