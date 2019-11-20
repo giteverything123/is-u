@@ -45,7 +45,20 @@
 					setTimeout(()=>{$('.dialog').hide();},1000);
 					return;
 				}
-				
+				$.ajax({
+					type: 'POST',
+					url: config.host + '/toRegister',
+					data: {username,password},
+					success: function(data){
+						if(data.success){
+							window.location.href = './login';
+						} else if(!data.success){
+							alert('注册失败');
+						}
+					}
+				});
+
+
 			});
 		})();
 	</script>

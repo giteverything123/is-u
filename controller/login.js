@@ -8,5 +8,8 @@ module.exports = {
 	},
 	toLogin: async (ctx,next) => {
 		await serviceHome.login(ctx,next);
+	},
+	toRegister: async (ctx,next) => {
+		await serviceHome.register(ctx,next);
 	}
 }

@@ -1,4 +1,5 @@
 const dbUser = require('../db/models/user');
+const mongoose  = require('mongoose');
 module.exports = {
 	login: async (ctx,next) => {
 		let {username,password} = ctx.request.body;
@@ -20,5 +21,23 @@ module.exports = {
 			}
 		});
 		await next();
+	},
+	register: async (ctx,next) => { //注册
+		let {username,password} = ctx.request.body;
+		let result =  await dbUser.find({username});
+		if(result.length > 0){
+			ctx.response.body = {
+				success: false,
+				msg: '该用户名已被注册'
+			}
+		} else {
+			let newUser = new dbUser({username:username,pwd:password});
+			try {
+				await newUser.save();
+				ctx.response.body = {success:true}
+			} catch(e) {
+				ctx.response.body = {success: false}
+			}
+		}
 	}
 }

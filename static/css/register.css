@@ -1,7 +1,7 @@
 html,
 body {
 	height: 100%;
-	background: rgb(164, 197, 240);
+	background: #fff;
 }
 * {
 	margin: 0;
@@ -14,9 +14,7 @@ body {
 	top: 50%;
 	width: 500px;
 	height: 280px;
-	background: rgb(228, 230, 167);
 	transform: translateX(-50%) translateY(-50%);
-	border: 1px solid #999;
 	border-radius: 4px;
 }
 input{
@@ -32,18 +30,22 @@ input{
 	font-size: 14px;
 	border-radius: 4px;
 }
+input:hover{box-shadow: 1px 1px 1px 0px #333;}
 #register-btn{
 	width: 100px;
 	height: 40px;
 	line-height: 40px;
 	text-align: center;
 	margin:0 auto;
-	background: rgb(143, 238, 20);
+	background: rgb(25, 149, 56);
 	margin-top: 40px;
 	border-radius: 4px;
 	color: #fff;
 	cursor: pointer;
 	user-select: none;
+}
+#register-btn:hover{
+	box-shadow: 1px 1px 1px 0px #000;
 }
 .dialog{
 	width: 100%;
