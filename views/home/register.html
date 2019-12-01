@@ -47,7 +47,7 @@
 				}
 				$.ajax({
 					type: 'POST',
-					url: config.host + '/toRegister',
+					url: '/toRegister',
 					data: {username,password},
 					success: function(data){
 						if(data.success){

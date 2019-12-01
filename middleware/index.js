@@ -10,7 +10,7 @@ const mongoose = require('mongoose');
 // 	console.log('断开连接数据库');
 // });
 async function connect () {
-  await mongoose.connect('mongodb://localhost:27017/is-u',{ useNewUrlParser: true ,useUnifiedTopology: true });
+  await mongoose.connect('mongodb://122.51.232.127:27017/is-u',{ useNewUrlParser: true ,useUnifiedTopology: true });
 }
 
 async function close () {
