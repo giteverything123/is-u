@@ -51,14 +51,22 @@
 					data: {username,password},
 					success: function(data){
 						if(data.success){
-							window.location.href = './login';
+							$('.dialog').show();
+							let time = 5;
+							$('#tip').html(time + '秒后跳转到登录页');
+							let circle = setInterval(() => {
+								$('#tip').html(time + '秒后跳转到登录页');
+								if(time === 0) {
+									clearInterval(circle);
+									window.location.href = './login';
+								}
+								time--
+							}, 1000);
 						} else if(!data.success){
 							alert('注册失败');
 						}
 					}
 				});
-
-
 			});
 		})();
 	</script>
