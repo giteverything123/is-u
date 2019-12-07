@@ -3,14 +3,10 @@ const bodyParser = require('koa-bodyparser');
 const nunjucks = require('koa-nunjucks-2');
 const static = require('koa-static');
 const mongoose = require('mongoose');
-// mongoose.connection.on('open',()=>{
-// 	console.log('连接上数据库');
-// });
-// mongoose.connection.on('close',()=>{
-// 	console.log('断开连接数据库');
-// });
-async function connect () {
-  await mongoose.connect('mongodb://122.51.232.127:27017/is-u',{ useNewUrlParser: true ,useUnifiedTopology: true });
+const appConfig = require('../config');
+async function connect () {	
+  let url = appConfig.env === 'dev' ? 'mongodb://localhost:27017/is-u' : 'mongodb://122.51.232.127:27017/is-u'
+  await mongoose.connect(url,{ useNewUrlParser: true ,useUnifiedTopology: true });
 }
 
 async function close () {
@@ -19,7 +15,9 @@ async function close () {
 
 module.exports = (app) => {
 	app.use(bodyParser());
-	app.use(static(path.join(__dirname,'../static')));
+	app.use(static(path.join(__dirname,'../static'),{
+		maxage: 60 * 1000 * 10080 //缓存7天
+	}));
 	app.use(nunjucks({
 		ext:'html',
 		path:path.join(__dirname,'../views'),
